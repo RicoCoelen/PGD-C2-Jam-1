@@ -7,6 +7,8 @@ public class PlayerSeen : MonoBehaviour
     RaycastHit hit;
     Vector3 rayDirection;
     GameObject player;
+    public float FOV = 90;
+    float angle;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,9 @@ public class PlayerSeen : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
-                //What to do if it sees the player?
+                angle = Vector3.Angle(rayDirection, Vector3.forward);
+                if(angle < FOV / 2)
+                    Debug.Log("Player detected");
             }
         }
     }
