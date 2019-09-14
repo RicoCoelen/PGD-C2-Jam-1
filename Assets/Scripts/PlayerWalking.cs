@@ -18,7 +18,7 @@ public class PlayerWalking : MonoBehaviour
     void Update()
     {
         velocity = Vector3.zero;
-        
+
         if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")) {
 
             if (Input.GetKey("w"))
@@ -40,6 +40,7 @@ public class PlayerWalking : MonoBehaviour
         }
         velocity.Normalize();
         
+        //This makes sure the player does not go into the ground when the camera is aimed downward
         velocity = Quaternion.AngleAxis(transform.GetChild(0).rotation.eulerAngles.y, Vector3.up) * velocity;
 
         velocity *= speed;

@@ -19,12 +19,13 @@ public class PlayerSeen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checks if an object is blocking the view of the alien
         rayDirection = player.transform.position - transform.position;
-        Debug.Log(rayDirection);
         if (Physics.Raycast(transform.position, rayDirection, out hit, rayDirection.magnitude))
         {
             if (hit.collider.tag == "Player")
             {
+                //Checks if the player is in the FOV
                 angle = Vector3.Angle(rayDirection, Vector3.forward);
                 if(angle < FOV / 2)
                     Debug.Log("Player detected");
