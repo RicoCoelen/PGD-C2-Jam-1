@@ -23,7 +23,7 @@ public class PlayerSeen : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
-                Debug.Log("OKE");
+                //What to do if it sees the player?
             }
         }
     }
