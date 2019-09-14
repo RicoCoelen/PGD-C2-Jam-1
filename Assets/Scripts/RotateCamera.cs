@@ -21,7 +21,7 @@ public class RotateCamera : MonoBehaviour
     {
         transform.rotation = originalRotation;
 
-        Xmovement += Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivity;
+        Xmovement -= Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivity;
         Ymovement += Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity;
 
         transform.Rotate(Xmovement, Ymovement, 0);
