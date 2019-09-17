@@ -8,7 +8,10 @@ public class RotateCamera : MonoBehaviour
     Quaternion originalRotation;
     private float Ymovement = 0;
     private float Xmovement = 0;
-
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;  
+    }
 
     // Start is called before the first frame update
     void Start()
