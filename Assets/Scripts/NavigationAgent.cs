@@ -26,10 +26,8 @@ public class NavigationAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // get if player is found
         Playerseen = GetComponent<PlayerSeen>().enemyDetected;
-
-        Debug.Log(Playerseen);
 
         if (Playerseen == true)
         {
@@ -55,5 +53,13 @@ public class NavigationAgent : MonoBehaviour
             // alien rotate view
             transform.rotation.SetLookRotation(this.GetComponent<Rigidbody>().velocity);
         }
-    } 
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("You Died! (Lets pretend you just died there)");
+        }
+    }
 }
