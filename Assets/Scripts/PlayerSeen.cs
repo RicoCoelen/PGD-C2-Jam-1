@@ -10,7 +10,7 @@ public class PlayerSeen : MonoBehaviour
     public float FOV = 90;
     float angle;
     public bool detectable = true;
-    private bool enemyDetected = false;
+    public bool enemyDetected = false;
     public float searchTimer = 20;
     public float lastDetectionTime;
 
