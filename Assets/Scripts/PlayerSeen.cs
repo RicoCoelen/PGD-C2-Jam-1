@@ -10,6 +10,9 @@ public class PlayerSeen : MonoBehaviour
     public float FOV = 90;
     float angle;
     public bool detectable = true;
+    private bool enemyDetected = false;
+    public float searchTimer = 20;
+    public float lastDetectionTime;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,16 @@ public class PlayerSeen : MonoBehaviour
                 //Checks if the player is in the FOV
                 angle = Vector3.Angle(rayDirection, Vector3.forward);
                 if(angle < FOV / 2)
+                {
                     Debug.Log("Player detected");
+                    enemyDetected = true;
+                    lastDetectionTime = Time.time;
+                }
+
+                if (enemyDetected == true && Time.time - lastDetectionTime > searchTimer)
+                {
+                    enemyDetected = false;
+                }
             }
         }
     }

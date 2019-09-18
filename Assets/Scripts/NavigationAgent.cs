@@ -5,10 +5,19 @@ using UnityEngine.AI;
 
 public class NavigationAgent : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // create array for points for alien to follow
+    public static int aantalPoints = 0;
+    public GameObject[] waypointGameObjects = new GameObject[aantalPoints];
+    public float waypointRange = 1;
+    int waypointCounter = 0;
 
-    public Transform target;
+    public Transform player;
     NavMeshAgent agent;
+    bool Playerseen;
+
+
+
+    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -17,6 +26,30 @@ public class NavigationAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
-    }
+
+        Playerseen = GetComponent<PlayerSeen>().enemyDetected;
+
+        Debug.Log(Playerseen);
+
+        if (Playerseen == true)
+        {
+            agent.SetDestination(player.position);
+        }
+        else
+        {
+            float distance = Vector3.Distance(waypointGameObjects[waypointCounter].transform.position, this.transform.position);
+
+            if (waypointRange > distance)
+            {
+                waypointCounter++;
+            }
+
+            if (waypointCounter >= waypointGameObjects.Length)
+            {
+                waypointCounter = 0;
+            }
+
+            agent.SetDestination(waypointGameObjects[waypointCounter].transform.position);
+        }
+    } 
 }
