@@ -9,6 +9,7 @@ public class PlayerSeen : MonoBehaviour
     GameObject player;
     public float FOV = 90;
     float angle;
+    public bool detectable = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class PlayerSeen : MonoBehaviour
         rayDirection = player.transform.position - transform.position;
         if (Physics.Raycast(transform.position, rayDirection, out hit, rayDirection.magnitude))
         {
-            if (hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player" && detectable == true)
             {
                 //Checks if the player is in the FOV
                 angle = Vector3.Angle(rayDirection, Vector3.forward);

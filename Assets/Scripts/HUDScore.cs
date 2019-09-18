@@ -18,7 +18,7 @@ public class HUDScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(score);
+        //Debug.Log(score);
         collectibleText.text = "Collectibles: " + score;
     }
 }
