@@ -49,7 +49,11 @@ public class NavigationAgent : MonoBehaviour
                 waypointCounter = 0;
             }
 
+            // move alien to waypoints
             agent.SetDestination(waypointGameObjects[waypointCounter].transform.position);
+            
+            // alien rotate view
+            transform.rotation.SetLookRotation(this.GetComponent<Rigidbody>().velocity);
         }
     } 
 }
